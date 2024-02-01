@@ -188,7 +188,7 @@ function fn_emojiElementsToPanel(type, panel, quill) {
         quill.updateContents(delta, Quill.sources.USER);
         // quill.insertEmbed(range.index, "emoji", emoji, Quill.sources.USER);
         setTimeout(() => {
-          quill.setSelection(range.index + 1);
+          quill.setSelection(range.index + 2);
         }, 0);
         fn_close();
       });
