@@ -58,32 +58,12 @@ function fn_checkDialogOpen(quill) {
 }
 
 function fn_showEmojiPalette(quill) {
-  const paletteWidthAndHeight = 250;
   let ele_emoji_area = document.createElement("div");
-  let selection = quill.getSelection();
-  const selectionBounds = quill.getBounds(selection.index);
-  const editorBounds = quill.container.getBoundingClientRect();
-  const selectionCenter = (selectionBounds.left + selectionBounds.right) / 2;
-  const selectionMiddle = (selectionBounds.top + selectionBounds.bottom) / 2;
-  const paletteLeft =
-    editorBounds.left + selectionCenter + paletteWidthAndHeight <=
-    document.documentElement.clientWidth
-      ? selectionCenter
-      : editorBounds.left - paletteWidthAndHeight;
-  const paletteTop =
-    editorBounds.top + selectionMiddle + paletteWidthAndHeight + 10 <=
-    document.documentElement.clientHeight
-      ? selectionMiddle + 10
-      : editorBounds.top + selectionMiddle - paletteWidthAndHeight - 10 >= 0
-      ? selectionMiddle - paletteWidthAndHeight - 10
-      : document.documentElement.clientHeight -
-        paletteWidthAndHeight -
-        editorBounds.top;
+  const emojiBtn = document.querySelector(".ql-emoji");
+  const emojiToolbarSpan = emojiBtn.parentElement;
 
-  quill.container.appendChild(ele_emoji_area);
+  emojiToolbarSpan.appendChild(ele_emoji_area);
   ele_emoji_area.id = "emoji-palette";
-  ele_emoji_area.style.left = `${paletteLeft}px`;
-  ele_emoji_area.style.top = `${paletteTop}px`;
 
   let tabToolbar = document.createElement("div");
   tabToolbar.id = "tab-toolbar";
